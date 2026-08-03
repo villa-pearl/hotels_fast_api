@@ -78,7 +78,7 @@ def get_result(llama_json):
     start_perf = time.perf_counter()
 
     response = client.chat.completions.create(
-        model="grok-3-mini",
+        model="grok-4-1-fast-non-reasoning",
         messages=[
             {"role": "user", "content": prompt},
         ],
