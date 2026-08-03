@@ -1,0 +1,12 @@
+.env
+.venv
+venv
+__pycache__/
+*.py[cod]
+*.pdf
+.DS_Store
+.idea/
+.vscode/
+output_structured.json
+hotel_result.json
+response.txt

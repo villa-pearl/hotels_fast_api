@@ -1,0 +1,14 @@
+# Escape hatch if you deploy via Docker on Render
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+COPY . .
+
+ENV PORT=10000
+EXPOSE 10000
+
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT}"]
