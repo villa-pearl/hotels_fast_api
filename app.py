@@ -6,7 +6,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 import fitz  # PyMuPDF
 
-import ai_gem
+#import ai_gem
+import ai_grok
 import ai_llama
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -46,7 +47,8 @@ async def upload_pdf(pdf_file: UploadFile = File(...)):
 
     # Тяжёлые sync-вызовы API — в отдельном потоке, чтобы не блокировать event loop
     llama_json = await asyncio.to_thread(ai_llama.get_llama_from_pdf, pdf_bytes)
-    ai_res = await asyncio.to_thread(ai_gem.get_gem_result, llama_json)
+    #ai_res = await asyncio.to_thread(ai_gem.get_result, llama_json)
+    ai_res = await asyncio.to_thread(ai_grok.get_result, llama_json)
 
     return {
         "filename": pdf_file.filename,

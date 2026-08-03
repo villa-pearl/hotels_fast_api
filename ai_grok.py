@@ -1,7 +1,6 @@
 import json
 import os
-from google import genai
-from google.genai import types
+from openai import OpenAI
 from datetime import datetime
 import time
 
@@ -9,16 +8,19 @@ import time
 def get_result(llama_json):
     """Принимает уже распарсенный JSON от LlamaParse (list/dict)."""
 
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = os.environ.get("GROK_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "Не задан GEMINI_API_KEY. "
+            "Не задан GROK_API_KEY. "
             "Добавьте Environment Variable на Render или в локальный .env."
         )
 
-    client = genai.Client(api_key=api_key)
 
-    print("get_gem_result start")
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://api.x.ai/v1",
+    )
+
 
     prompt = f"""
 Ты — эксперт по анализу прайс-листов отелей.
@@ -75,29 +77,19 @@ def get_result(llama_json):
     print(f"Время начала: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     start_perf = time.perf_counter()
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="text/plain"
-        )
+    response = client.chat.completions.create(
+        model="grok-3-mini",
+        messages=[
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.1,
     )
 
     end_perf = time.perf_counter()
-    print(response.text)
+    content = response.choices[0].message.content or ""
+    print(content)
 
     duration = end_perf - start_perf
     print(f"Время ожидания ответа: {duration:.2f} сек.")
 
-    return response.text
-
-# response.text уже содержит JSON
-#result = json.loads(response.text)
-
-#with open("hotel_result.json", "w", encoding="utf-8") as f:
-#    json.dump(result, f, indent=4, ensure_ascii=False)
-
-#with open("response.txt", "w", encoding="utf-8") as f:
-#    f.write(response.text)
-
-
+    return content
