@@ -6,7 +6,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 import fitz  # PyMuPDF
 
-#import ai_gem
+import ai_gem
 import ai_grok
 import ai_llama
 
