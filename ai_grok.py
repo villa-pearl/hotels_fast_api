@@ -97,11 +97,13 @@ def get_result(pdf_json):
     start_perf = time.perf_counter()
 
     response = client.chat.completions.create(
-        model="grok-4-1-fast-non-reasoning",
+#        model="grok-4-1-fast-non-reasoning",
+        model="grok-3-mini",
+
         messages=[
             {"role": "user", "content": prompt},
         ],
-        temperature=0.1,
+        temperature=0.0,
     )
 
     end_perf = time.perf_counter()
