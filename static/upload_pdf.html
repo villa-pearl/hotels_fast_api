@@ -200,122 +200,6 @@ button:disabled {
     transform: none;
 }
 
-.btn-row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-button.btn-secondary {
-    color: var(--ink);
-    background: #fff;
-    border: 1px solid var(--line);
-}
-
-button.btn-secondary:hover {
-    background: var(--accent-soft);
-    border-color: rgba(13, 115, 119, 0.35);
-    box-shadow: none;
-}
-
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: transparent;
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.modal.is-open {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-dialog {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: min(960px, calc(100vw - 48px));
-    height: min(88vh, 900px);
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: 0 24px 60px rgba(15, 28, 46, 0.22);
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: auto;
-    transition: opacity 0.2s ease;
-}
-
-.modal.is-open .modal-dialog {
-    opacity: 1;
-}
-
-.modal-dialog.is-dragging {
-    transition: none;
-    user-select: none;
-}
-
-.modal-dialog.is-dragging .modal-body iframe {
-    pointer-events: none;
-}
-
-.modal-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--line);
-    background: var(--surface-solid);
-    cursor: move;
-    touch-action: none;
-}
-
-.modal-head h2 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.modal-close {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border-radius: 8px;
-    color: var(--ink);
-    background: transparent;
-    font-size: 1.35rem;
-    line-height: 1;
-    cursor: pointer;
-}
-
-.modal-close:hover {
-    background: rgba(15, 28, 46, 0.06);
-    box-shadow: none;
-}
-
-.modal-body {
-    flex: 1;
-    min-height: 0;
-    background: #e8eef5;
-}
-
-.modal-body iframe {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
 .status {
     display: flex;
     align-items: center;
@@ -394,176 +278,23 @@ button.btn-secondary:hover {
     color: var(--accent);
 }
 
-.result-body {
+textarea {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    width: 100%;
     min-height: 360px;
-    padding: 16px 20px 20px;
-    overflow: auto;
-}
-
-.meta {
     margin: 0;
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.45;
-}
-
-.meta strong {
-    color: var(--ink);
-    font-weight: 600;
-}
-
-.placeholder {
-    margin: auto 0;
-    color: #8a97a8;
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    line-height: 1.55;
-}
-
-.table-wrap {
-    overflow: auto;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.55);
-}
-
-table.price-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.98rem;
-}
-
-.price-table th,
-.price-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.price-table th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background: #eef3f7;
-    font-weight: 600;
-    font-size: 0.89rem;
-    letter-spacing: 0.01em;
-    color: var(--muted);
-}
-
-.price-table th:first-child,
-.price-table td:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    min-width: 180px;
-    white-space: normal;
-    background: #f4f7fb;
-    font-weight: 500;
-}
-
-.price-table th:first-child {
-    z-index: 3;
-    background: #e8eef5;
-}
-
-.price-table .room-name {
-    display: block;
-}
-
-.price-table .header-sub {
-    display: block;
-    margin-top: 2px;
-    font-weight: 400;
-    color: var(--muted);
-}
-
-.price-table .price-type-badge {
-    display: inline-block;
-    margin-top: 2px;
-    padding: 1px 5px;
-    border-radius: 4px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 0.85em;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-}
-
-.price-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.price-table tbody tr:hover td {
-    background: rgba(13, 115, 119, 0.06);
-}
-
-.price-table tbody tr:hover td:first-child {
-    background: rgba(13, 115, 119, 0.1);
-}
-
-.price-table td.price {
-    font-family: var(--mono);
-    font-variant-numeric: tabular-nums;
-    text-align: right;
-}
-
-.error-text {
-    margin: 0;
-    color: var(--danger);
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-.panel-json {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: rise 0.7s ease 0.12s both;
-}
-
-.panel-json .panel-result-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--line);
-}
-
-.panel-json .panel-result-head h2 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-.ai-res-raw {
-    width: 100%;
-    min-height: 220px;
-    margin: 0;
-    padding: 16px 20px;
+    padding: 18px 20px;
     border: none;
     resize: vertical;
     outline: none;
     background: transparent;
     color: var(--ink);
     font-family: var(--mono);
-    font-size: 0.82rem;
-    line-height: 1.5;
+    font-size: 0.86rem;
+    line-height: 1.55;
 }
 
-.ai-res-raw::placeholder {
+textarea::placeholder {
     color: #8a97a8;
 }
 
@@ -591,7 +322,7 @@ table.price-table {
         min-height: 320px;
     }
 
-    .result-body {
+    textarea {
         min-height: 280px;
     }
 }
@@ -602,7 +333,8 @@ table.price-table {
 <div class="page">
     <header class="header">
         <h1>Загрузка PDF</h1>
-        <p>Загрузите прайс-лист отеля — сервис извлечёт структуру и вернёт таблицу с ценами по номерам.</p>
+        <p>Загрузите прайс-лист отеля — сервис извлечёт данные и вернёт Excel-таблицу с ценами по номерам. 
+           Поиск ведется в первых 3 страницах pdf-файла.</p>
     </header>
 
     <div class="layout">
@@ -620,14 +352,9 @@ table.price-table {
 
             <div class="file-name" id="fileName">Файл не выбран</div>
 
-            <div class="btn-row">
-                <button type="button" id="sendBtn" onclick="sendFile()">
-                    Отправить
-                </button>
-                <button type="button" id="viewPdfBtn" class="btn-secondary" onclick="openPdfModal()" disabled>
-                    Просмотреть PDF
-                </button>
-            </div>
+            <button type="button" id="sendBtn" onclick="sendFile()">
+                Отправить
+            </button>
 
             <p class="status" id="status">Готов</p>
         </aside>
@@ -637,33 +364,11 @@ table.price-table {
                 <h2>Результат</h2>
                 <p class="duration" id="duration">Длительность: —</p>
             </div>
-            <div class="result-body" id="result">
-                <p class="placeholder">Здесь появится таблица цен…</p>
-            </div>
+            <textarea
+                id="result"
+                readonly
+                placeholder="Здесь появится ответ сервера..."></textarea>
         </section>
-    </div>
-
-    <section class="panel panel-json">
-        <div class="panel-result-head">
-            <h2>ai_res JSON</h2>
-        </div>
-        <textarea
-            id="aiResRaw"
-            class="ai-res-raw"
-            readonly
-            placeholder="Здесь появится полный JSON из ai_res…"></textarea>
-    </section>
-</div>
-
-<div class="modal" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle" hidden>
-    <div class="modal-dialog">
-        <div class="modal-head">
-            <h2 id="pdfModalTitle">PDF</h2>
-            <button type="button" class="modal-close" id="pdfModalClose" aria-label="Закрыть">&times;</button>
-        </div>
-        <div class="modal-body">
-            <iframe id="pdfViewer" title="Просмотр PDF"></iframe>
-        </div>
     </div>
 </div>
 
@@ -673,32 +378,16 @@ const fileInput = document.getElementById("pdfFile");
 const fileName = document.getElementById("fileName");
 const status = document.getElementById("status");
 const result = document.getElementById("result");
-const aiResRaw = document.getElementById("aiResRaw");
 const sendBtn = document.getElementById("sendBtn");
-const viewPdfBtn = document.getElementById("viewPdfBtn");
 const durationEl = document.getElementById("duration");
-const pdfModal = document.getElementById("pdfModal");
-const pdfModalDialog = pdfModal.querySelector(".modal-dialog");
-const pdfModalHead = pdfModal.querySelector(".modal-head");
-const pdfModalTitle = document.getElementById("pdfModalTitle");
-const pdfModalClose = document.getElementById("pdfModalClose");
-const pdfViewer = document.getElementById("pdfViewer");
-
-let selectedPdfFile = null;
-let pdfObjectUrl = null;
-let dragState = null;
 
 fileInput.addEventListener("change", () => {
     if (fileInput.files.length === 0) {
-        selectedPdfFile = null;
-        viewPdfBtn.disabled = true;
         fileName.textContent = "Файл не выбран";
         fileName.classList.remove("has-file");
         return;
     }
-    selectedPdfFile = fileInput.files[0];
-    viewPdfBtn.disabled = false;
-    fileName.textContent = selectedPdfFile.name;
+    fileName.textContent = fileInput.files[0].name;
     fileName.classList.add("has-file");
 });
 
@@ -718,285 +407,11 @@ function setDuration(text, isSet) {
     durationEl.classList.toggle("is-set", Boolean(isSet));
 }
 
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+function downloadFilenameFromResponse(response, fallback) {
+    const disposition = response.headers.get("Content-Disposition") || "";
+    const match = /filename="?([^";]+)"?/i.exec(disposition);
+    return match ? match[1] : fallback;
 }
-
-function parseAiRes(aiRes) {
-    if (aiRes == null) return null;
-    if (typeof aiRes === "object") return aiRes;
-
-    let text = String(aiRes).trim();
-    const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
-    if (fenced) text = fenced[1].trim();
-
-    return JSON.parse(text);
-}
-
-function formatPrice(value) {
-    if (value == null || value === "") return "—";
-    return escapeHtml(value);
-}
-
-function formatPeriod(period) {
-    if (period == null) return "";
-    const text = String(period).trim();
-    const pad = (n) => String(n).padStart(2, "0");
-
-    // 01/11/2026/23/12/2026  или  01-11-2026/23-12-2026
-    const full = text.match(
-        /^(\d{1,2})[./-](\d{1,2})[./-](\d{4})\s*[\/–—-]\s*(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/
-    );
-    if (full) {
-        const [, d1, m1, y1, d2, m2, y2] = full;
-        return `${pad(d1)}.${pad(m1)}.${y1} - ${pad(d2)}.${pad(m2)}.${y2}`;
-    }
-
-    // 1/1 - 31/8/2026  или  1/11 - 31/12/2026
-    const short = text.match(
-        /^(\d{1,2})[./-](\d{1,2})(?:[./-](\d{4}))?\s*[\/–—-]\s*(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/
-    );
-    if (short) {
-        const [, d1, m1, y1, d2, m2, y2] = short;
-        const startYear = y1 || y2;
-        return `${pad(d1)}.${pad(m1)}.${startYear} - ${pad(d2)}.${pad(m2)}.${y2}`;
-    }
-
-    return text;
-}
-
-function getItemHeaders(item) {
-    const raw = item?.headrs ?? item?.headers ?? [];
-    if (!Array.isArray(raw)) return [];
-    return raw.map((value) => String(value).trim()).filter(Boolean);
-}
-
-function headerColumnKey(headers) {
-    return headers.join("\0");
-}
-
-function isPriceTypeHeader(text) {
-    const upper = String(text).trim().toUpperCase();
-    return upper === "FIT" || upper === "GIT" || /^FIT\b/.test(upper) || /^GIT\b/.test(upper);
-}
-
-function renderHeaderCell(headers) {
-    if (!headers.length) return "—";
-
-    const season = headers[0];
-    const rest = headers.slice(1);
-    let html = `<span class="room-name">${escapeHtml(formatPeriod(season))}</span>`;
-
-    for (const part of rest) {
-        const label = formatPeriod(part);
-        if (isPriceTypeHeader(part)) {
-            html += `<span class="price-type-badge">${escapeHtml(label)}</span>`;
-        } else {
-            html += `<span class="header-sub">${escapeHtml(label)}</span>`;
-        }
-    }
-    return html;
-}
-
-function buildPriceMatrix(items) {
-    const columns = [];
-    const columnIndex = new Map();
-    const rooms = [];
-    const roomIndex = new Map();
-    const matrix = new Map();
-
-    for (const item of items) {
-        const room = String(item?.room ?? "").trim() || "—";
-        const headers = getItemHeaders(item);
-        const colKey = headerColumnKey(headers) || "_empty";
-        const price = item?.price;
-
-        if (!columnIndex.has(colKey)) {
-            columnIndex.set(colKey, columns.length);
-            columns.push({ key: colKey, headers });
-        }
-
-        if (!roomIndex.has(room)) {
-            roomIndex.set(room, rooms.length);
-            rooms.push(room);
-            matrix.set(room, new Map());
-        }
-
-        matrix.get(room).set(colKey, price);
-    }
-
-    return { columns, rooms, matrix };
-}
-
-function formatAiResRaw(aiRes) {
-    if (aiRes == null) return "";
-    if (typeof aiRes === "object") {
-        return JSON.stringify(aiRes, null, 2);
-    }
-
-    const text = String(aiRes);
-    try {
-        return JSON.stringify(parseAiRes(text), null, 2);
-    } catch (_) {
-        return text;
-    }
-}
-
-function setAiResRaw(aiRes) {
-    aiResRaw.value = formatAiResRaw(aiRes);
-}
-
-function renderTable(json) {
-    setAiResRaw(json.ai_res);
-
-    let data;
-    try {
-        data = parseAiRes(json.ai_res);
-    } catch (err) {
-        result.innerHTML = `<p class="error-text">Не удалось разобрать JSON: ${escapeHtml(err)}</p>`;
-        return;
-    }
-
-    const items = Array.isArray(data?.prices) ? data.prices : [];
-    const { columns, rooms, matrix } = buildPriceMatrix(items);
-
-    const meta =
-          `<p class="meta">`
-        + `<strong>${escapeHtml(json.filename ?? "")}</strong>`
-        + ` · ${escapeHtml(json.size_bytes ?? "")} байт`
-        + ` · ${escapeHtml(json.pages ?? "")} стр.`
-        + `</p>`;
-
-    if (!rooms.length) {
-        result.innerHTML = meta + `<p class="error-text">Нет данных для таблицы</p>`;
-        return;
-    }
-
-    // Колонки: Номер + уникальные наборы headrs; строки — уникальные room.
-    let head = `<tr><th>Номер</th>`;
-    for (const column of columns) {
-        head += `<th>${renderHeaderCell(column.headers)}</th>`;
-    }
-    head += `</tr>`;
-
-    let body = "";
-    for (const room of rooms) {
-        const rowPrices = matrix.get(room) || new Map();
-        body += `<tr><td><span class="room-name">${escapeHtml(room)}</span></td>`;
-        for (const column of columns) {
-            body += `<td class="price">${formatPrice(rowPrices.get(column.key))}</td>`;
-        }
-        body += `</tr>`;
-    }
-
-    result.innerHTML =
-          meta
-        + `<div class="table-wrap">`
-        + `<table class="price-table">`
-        + `<thead>${head}</thead>`
-        + `<tbody>${body}</tbody>`
-        + `</table>`
-        + `</div>`;
-}
-
-function showPlaceholder() {
-    result.innerHTML = `<p class="placeholder">Здесь появится таблица цен…</p>`;
-    aiResRaw.value = "";
-}
-
-function showError(err) {
-    result.innerHTML = `<p class="error-text">${escapeHtml(err)}</p>`;
-}
-
-function revokePdfUrl() {
-    if (pdfObjectUrl) {
-        URL.revokeObjectURL(pdfObjectUrl);
-        pdfObjectUrl = null;
-    }
-}
-
-function centerPdfModal() {
-    const pad = 24;
-    const width = pdfModalDialog.offsetWidth;
-    const height = pdfModalDialog.offsetHeight;
-    const left = Math.max(pad, Math.round((window.innerWidth - width) / 2));
-    const top = Math.max(pad, Math.round((window.innerHeight - height) / 2));
-    pdfModalDialog.style.left = left + "px";
-    pdfModalDialog.style.top = top + "px";
-}
-
-function openPdfModal() {
-    if (!selectedPdfFile) {
-        alert("Сначала выберите PDF файл");
-        return;
-    }
-
-    revokePdfUrl();
-    pdfObjectUrl = URL.createObjectURL(selectedPdfFile);
-    pdfModalTitle.textContent = selectedPdfFile.name;
-    pdfViewer.src = pdfObjectUrl;
-    pdfModal.hidden = false;
-    centerPdfModal();
-    requestAnimationFrame(() => pdfModal.classList.add("is-open"));
-}
-
-function closePdfModal() {
-    pdfModal.classList.remove("is-open");
-    const onEnd = () => {
-        pdfModal.hidden = true;
-        pdfViewer.src = "";
-        revokePdfUrl();
-        pdfModal.removeEventListener("transitionend", onEnd);
-    };
-    pdfModal.addEventListener("transitionend", onEnd);
-}
-
-pdfModalHead.addEventListener("pointerdown", (e) => {
-    if (e.target.closest(".modal-close")) return;
-    if (e.button !== 0) return;
-
-    const rect = pdfModalDialog.getBoundingClientRect();
-    dragState = {
-        offsetX: e.clientX - rect.left,
-        offsetY: e.clientY - rect.top,
-        moved: false,
-    };
-    pdfModalDialog.classList.add("is-dragging");
-    pdfModalHead.setPointerCapture(e.pointerId);
-});
-
-pdfModalHead.addEventListener("pointermove", (e) => {
-    if (!dragState) return;
-
-    dragState.moved = true;
-    const left = e.clientX - dragState.offsetX;
-    const top = e.clientY - dragState.offsetY;
-    pdfModalDialog.style.left = left + "px";
-    pdfModalDialog.style.top = top + "px";
-});
-
-function endDrag(e) {
-    if (!dragState) return;
-    pdfModalDialog.classList.remove("is-dragging");
-    try {
-        pdfModalHead.releasePointerCapture(e.pointerId);
-    } catch (_) {}
-    dragState = null;
-}
-
-pdfModalHead.addEventListener("pointerup", endDrag);
-pdfModalHead.addEventListener("pointercancel", endDrag);
-
-pdfModalClose.addEventListener("click", closePdfModal);
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && pdfModal.classList.contains("is-open")) {
-        closePdfModal();
-    }
-});
 
 async function sendFile() {
     if (fileInput.files.length === 0) {
@@ -1004,15 +419,14 @@ async function sendFile() {
         return;
     }
 
-    const selectedFile = fileInput.files[0];
-    selectedPdfFile = selectedFile;
+    const pdfName = fileInput.files[0].name;
     const formData = new FormData();
-    formData.append("pdf_file", selectedFile);
+    formData.append("pdf_file", fileInput.files[0]);
 
     sendBtn.disabled = true;
     setStatus("Файл отправляется… Ожидание ответа сервера…", "is-loading");
     setDuration("Длительность: …", false);
-    showPlaceholder();
+    result.value = "";
 
     const startedAt = performance.now();
 
@@ -1022,28 +436,53 @@ async function sendFile() {
             body: formData
         });
 
-        if (!response.ok) {
-            throw new Error("HTTP " + response.status);
-        }
-
-        const json = await response.json();
         const elapsedMs = performance.now() - startedAt;
+        const contentType = response.headers.get("Content-Type") || "";
 
-        if (json.error) {
-            throw new Error(json.error);
+        if (!response.ok) {
+            const errText = await response.text();
+            throw new Error(errText || ("HTTP " + response.status));
         }
 
-        renderTable(json);
+        if (contentType.includes("application/json")) {
+            const json = await response.json();
+            if (json.error) throw new Error(json.error);
+            result.value = JSON.stringify(json, null, 2);
+            setDuration("Длительность: " + formatDuration(elapsedMs), true);
+            setStatus("Готово", "is-ok");
+            return;
+        }
+
+        const blob = await response.blob();
+        const downloadName = downloadFilenameFromResponse(
+            response,
+            pdfName.replace(/\.pdf$/i, "") + ".xlsx"
+        );
+
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = downloadName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+
+        result.value =
+              "XLSX готов к скачиванию.\n"
+            + "Исходный PDF: " + pdfName + "\n"
+            + "Файл: " + downloadName + "\n"
+            + "Размер: " + blob.size + " байт";
+
         setDuration("Длительность: " + formatDuration(elapsedMs), true);
-        setStatus("Готово", "is-ok");
+        setStatus("Готово — файл скачивается", "is-ok");
     } catch (err) {
         const elapsedMs = performance.now() - startedAt;
         setDuration("Длительность: " + formatDuration(elapsedMs), true);
         setStatus("Ошибка", "is-error");
-        showError(err);
+        result.value = String(err);
     } finally {
         sendBtn.disabled = false;
-        viewPdfBtn.disabled = !selectedPdfFile;
     }
 }
 
