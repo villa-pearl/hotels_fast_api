@@ -168,6 +168,6 @@ def get_result(pdf_bytes: bytes) -> bytes:
     )
 
     text_result = response.output_text or ""
-    print(text_result)
+    #print(text_result)
 
     return _tsv_to_xlsx_bytes(text_result)
