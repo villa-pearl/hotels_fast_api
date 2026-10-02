@@ -9,6 +9,7 @@ from fastapi.responses import FileResponse, Response
 import ai_grok3
 import send_to_table
 import ai_grok_epress
+import ai_grok_epress_json
 
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
@@ -114,4 +115,28 @@ async def upload_pdf(request: Request, pdf_file: UploadFile = File(...)):
         "pages": pages,
         "ai_res": ai_res,
     }
+
+@app.post("/api/v1/express_pdf")
+async def upload_pdf(request: Request, pdf_file: UploadFile = File(...)):
+    print("def express_upload_pdf")
+
+    if not pdf_file.filename or not pdf_file.filename.lower().endswith(".pdf"):
+        return {"error": "Разрешены только PDF-файлы"}
+
+    pdf_bytes = await pdf_file.read()
+
+    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    try:
+        pages = doc.page_count
+    finally:
+        doc.close()
+
+    ai_res = await asyncio.to_thread(ai_grok_epress_json.get_result, pdf_bytes)
+
+    return {
+        "filename": pdf_file.filename,
+        "ai_res": ai_res,
+    }
+
+
 
