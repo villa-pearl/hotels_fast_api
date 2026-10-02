@@ -92,6 +92,7 @@ def get_result(pdf_bytes: bytes) -> bytes:
     print(f"Send to Grok: {len(pages_png)} image(s)")
     response = client.responses.create(
         model="grok-4.5",
+        text={"format": {"type": "json_object"}},
         input=[
             {
                 "role": "user",
