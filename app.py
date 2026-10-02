@@ -2,6 +2,7 @@ import asyncio
 from pathlib import Path
 
 import fitz
+import json
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, File, Request
 from fastapi.responses import FileResponse, Response
@@ -133,10 +134,19 @@ async def upload_pdf(request: Request, pdf_file: UploadFile = File(...)):
 
     ai_res = await asyncio.to_thread(ai_grok_epress_json.get_result, pdf_bytes)
 
+    # JSON-строку превращаем в Python dict/list
+    try:
+        ai_res = json.loads(ai_res)
+    except json.JSONDecodeError as e:
+        print("Ошибка JSON:", e)
+        return {
+            "filename": pdf_file.filename,
+            "ai_res": ai_res,
+            "error": "AI вернул некорректный JSON"
+        }
+
     return {
         "filename": pdf_file.filename,
         "ai_res": ai_res,
     }
-
-
 
