@@ -1,6 +1,7 @@
 import asyncio
 from pathlib import Path
 
+import re
 import fitz
 import json
 from dotenv import load_dotenv
@@ -74,7 +75,7 @@ async def upload_pdf(request: Request, pdf_file: UploadFile = File(...)):
     xlsx_bytes = await asyncio.to_thread(ai_grok3.get_result, pdf_bytes)
 
     base_name = Path(pdf_file.filename).stem
-    download_name = f"{base_name}.xlsx"
+    download_name = re.sub(r"[^a-zA-Z0-9_.-]", "_", base_name) + ".xlsx"
 
     return Response(
         content=xlsx_bytes,
